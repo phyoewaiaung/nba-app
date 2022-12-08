@@ -1,0 +1,16 @@
+.option{
+    font-weight: 300;
+    font-size: 16px;
+    color: #bababa;
+    padding: 10px;
+    border-top: 1px solid #404040;
+}
+
+.option a{
+    color: inherit;
+    text-decoration: none;
+}
+
+.homeSvg{
+    margin-right: 10px;
+}
