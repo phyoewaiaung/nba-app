@@ -1,11 +1,10 @@
 import React,{Component} from "react";
-import Header from '../../header/Header';
-import Footer from "../../components/footer/Footer";
-import style from './layout.module.css';
+import styles from '../layout/layout.module.css';
+import Header from "../../components/header/Header";
 
-class Layout extends Component {
-    state = {
-        showNav : false
+class Layout extends Component{
+    state={
+        showNav:false
     }
 
     toggleSideNav = (action) => {
@@ -14,19 +13,20 @@ class Layout extends Component {
         })
     }
 
-    render() { 
+
+    render(){
         return(
-            <div>
+            <div className={styles.body}>
                 <Header 
-                showNav = {this.state.showNav}
-                onHideNav = {()=> this.toggleSideNav(false)}
-                onOpenNav = {()=> this.toggleSideNav(true)}
+                    showNav={this.state.showNav}
+                    onHideNav={() => this.toggleSideNav(false)}
+                    onOpenNav={() => this.toggleSideNav(true)}
                 />
                 {this.props.children}
-                <Footer />
+                Footer
             </div>
         )
     }
 }
 
-export default Layout;
+export default Layout
