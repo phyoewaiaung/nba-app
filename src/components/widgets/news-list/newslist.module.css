@@ -1,0 +1,25 @@
+.newslist_item{
+    border: 1px solid #f2f2f2;
+    background: white;
+    margin-top: 0px;
+    padding: 8px 5px 0px 5px;
+}
+.newslist_item h2{
+    font-size: 13px;
+    line-height: 21px;
+    margin: 5px 0;
+    color: #525252;
+}
+.newslist_item a{
+    text-decoration: none;
+}
+.newslist_wrapper{
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all .5s ease-in;
+}
+.newslist_wrapper_enter{
+    opacity: 1;
+    transform: translateX(0%);
+}
