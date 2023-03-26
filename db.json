@@ -472,6 +472,7 @@
         },
         {
           "id": 8,
+          "city": "yangon",
           "name": "Nuggets",
           "logo": "nuggets.png",
           "poll": "false",
