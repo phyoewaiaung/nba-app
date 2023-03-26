@@ -61,3 +61,19 @@
     line-height: 23px;
     margin: 15px 0;
 }
+.video_wrapper{
+    background: #fff;
+    margin: 0 5px;
+    border: 1px solid #c5c5c5;
+}
+.video_wrapper h1{
+    font-size: 25px;
+    font-weight: 400;
+    color: #4d4d4d;
+    margin: 15px 0;
+    padding: 0 10px;
+}
+
+.video_wrapper iframe{
+    border: 0;
+}
