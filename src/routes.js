@@ -1,5 +1,5 @@
 import React from "react";
-import { Route,Switch } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import Home from './components/home/Home'
 import Layout from './hoc/layout/Layout'
 import NewsArticle from "./components/articles/news/post";
@@ -8,18 +8,20 @@ import NewsMain from "./components/articles/news/post/main";
 import VideosMain from "./components/articles/videos/main";
 import SignIn from "./components/signin/SignIn";
 import Dashboard from "./components/dashboard/Dashboard";
+import PrivateRoute from "./components/auth-routes/PrivateRoute";
+import PublicRoute from "./components/auth-routes/PublicRoute";
 
 const HomeRoutes = (props) => {
         return(
             <Layout user={props.user}>
                 <Switch>
-                    <Route path="/" exact component={Home} />
-                    <Route path="/news" exact component={NewsMain} />
-                    <Route path="/articles/:id" exact component={NewsArticle} />
-                    <Route path="/videos/:id" exact component={VideosArticle} />
-                    <Route path="/videos" exact component={VideosMain} />
-                    <Route path="/sign-in" exact component={SignIn}/>
-                    <Route path="/dashboard" exact component={Dashboard}/>
+                    <PublicRoute {...props} restricted={false} path="/" exact component={Home} />
+                    <PublicRoute {...props} restricted={false} path="/news" exact component={NewsMain} />
+                    <PublicRoute {...props} restricted={false} path="/articles/:id" exact component={NewsArticle} />
+                    <PublicRoute {...props} restricted={false} path="/videos/:id" exact component={VideosArticle} />
+                    <PublicRoute {...props} restricted={false} path="/videos" exact component={VideosMain} />
+                    <PublicRoute {...props} restricted={true} path="/sign-in" exact component={SignIn}/>
+                    <PrivateRoute {...props} path="/dashboard" exact component={Dashboard}/>
                 </Switch>
             </Layout>
         )
