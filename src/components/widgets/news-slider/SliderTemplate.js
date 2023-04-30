@@ -22,7 +22,7 @@ const SliderTemplates = (props) => {
                 return (
                     <div key={i}>
                         <div className={style.featured_item}>
-                            <div className={style.featured_image} style={{background:`url(../images/articles/${item.image})`}}>
+                            <div className={style.featured_image} style={{background:`url(${item.image})`}}>
                             </div>
                             <Link to={`/articles/${item.id}`}>
                                 <div className={style.featured_caption}>{item.title}</div>

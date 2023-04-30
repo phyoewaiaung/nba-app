@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { firebaseDB, firebaseLooper, firebaseTeams } from '../../../../firebase';
+import { firebase, firebaseDB, firebaseLooper, firebaseTeams } from '../../../../firebase';
 import styles from '../../article.module.css';
 import Header from './Header';
 
@@ -7,23 +7,11 @@ class NewsArticle extends Component{
 
     state = {
         article: [],
-        team: []
+        team: [],
+        imageURL : ''
     }
 
     componentWillMount(){
-        // axios.get(`${URL}/articles?id=${this.props.match.params.id}`)
-        // .then(res => {
-        //     let article = res.data[0];
-        //     axios.get(`${URL}/teams?id=${article.team}`)
-        //     .then(res => {
-        //         this.setState({
-        //             article,
-        //             team:res.data
-        //         })
-        //     })
-
-        // })
-
         firebaseDB.ref(`articles/${this.props.match.params.id}`).once('value')
         .then((snapshot)=> {
             let article = snapshot.val();
@@ -34,6 +22,17 @@ class NewsArticle extends Component{
                     article,
                     team
                 })
+                this.getImageURL(article.image)
+            })
+        })
+    }
+
+    getImageURL = (filename) => {
+        firebase.storage().ref('images')
+        .child(filename).getDownloadURL()
+        .then(url => {
+            this.setState({
+                imageURL: url
             })
         })
     }
@@ -49,9 +48,8 @@ class NewsArticle extends Component{
                 />
                 <div className={styles.article_body}>
                     <h1>{article.title}</h1>
-                    <div className={styles.article_image} style={{background:`url(/images/articles/${article.image})`}}></div>
-                    <div className={styles.article_text}>
-                        {article.body}
+                    <div className={styles.article_image} style={{background:`url('${this.state.imageURL}')`}}></div>
+                    <div className={styles.article_text} dangerouslySetInnerHTML={{__html: article.body}}>
                     </div>
                 </div>
             </div>
