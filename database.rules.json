@@ -1,0 +1,12 @@
+{
+  "rules": {
+    ".read": true,
+    ".write": "auth != null",
+    "articles" : {
+      ".indexOn" : "id"
+    },
+    "videos" : {
+      ".indexOn" : "id"
+    }
+  }
+}
